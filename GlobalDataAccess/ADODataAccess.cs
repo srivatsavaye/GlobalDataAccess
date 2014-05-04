@@ -32,7 +32,7 @@ namespace GlobalDataAccess
                 adap.Fill(ds);
                 ret = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error running RunQuery method", ex);
             }
@@ -59,20 +59,20 @@ namespace GlobalDataAccess
                 adap.Fill(ds);
                 ret = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error running ExecuteStoredProc method", ex);
             }
             return ret;
         }
 
-        public bool ExecuteNonQuery(string sql, List<SqlParameter> paramList)
+        public bool ExecuteNonQuery(string spName, List<SqlParameter> paramList)
         {
-                        bool ret = false;
+            bool ret = false;
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = sql;
+            cmd.CommandText = spName;
 
             try
             {
@@ -88,7 +88,7 @@ namespace GlobalDataAccess
                 _conn.Close();
                 ret = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error running ExecuteNonQuery method", ex);
             }
