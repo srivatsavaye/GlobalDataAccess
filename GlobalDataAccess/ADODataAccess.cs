@@ -18,7 +18,6 @@ namespace GlobalDataAccess
             _conn = new SqlConnection(_connectionString);
         }
 
-
         public bool RunQuery(DataSet ds, string sql)
         {
             bool ret = false;
@@ -38,6 +37,7 @@ namespace GlobalDataAccess
             }
             return ret;
         }
+
         public bool ExecuteStoredProc(DataSet ds, string sql, List<SqlParameter> paramList)
         {
             bool ret = false;
@@ -99,22 +99,5 @@ namespace GlobalDataAccess
             }
             return ret;
         }
-
-        //protected override void RunStoredProc(DataSet ds, string sql, List<SqlParameter> paramList)
-        //{
-        //    int returnValue = 0;
-        //    SqlCommand cmd = new SqlCommand();
-        //    cmd.Connection = _conn;
-        //    cmd.CommandType = CommandType.StoredProcedure;
-
-        //    if (paramList != null)
-        //    {
-        //        foreach (SqlParameter p in paramList)
-        //        {
-        //            cmd.Parameters.Add(p);
-        //        }
-        //    }
-        //    int.TryParse(cmd.ExecuteScalar().ToString(),out returnValue);
-        //}
     }
 }
